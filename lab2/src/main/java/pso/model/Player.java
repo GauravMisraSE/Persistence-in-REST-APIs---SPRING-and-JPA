@@ -1,5 +1,9 @@
 package pso.model;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.util.*;
 
 /**
@@ -7,8 +11,8 @@ import java.util.*;
  *
  */
 @Entity
+@JsonPropertyOrder({"id", "firstname", "lastname", "email", "description", "address", "opponents","sponsor", "groupNo"})
 public class Player {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -22,11 +26,12 @@ public class Player {
 	private Address address;
 	@Transient
 	private List<Long> opponents = new ArrayList<Long>();
-
+	@Transient
+	private String groupNo = "Group19";
 	@ManyToOne
 	@JoinColumn(name = "sponsor_id")
 	private Sponsor sponsorid;
-	
+
 	public Player() {
 	}
 
@@ -37,86 +42,91 @@ public class Player {
 		this.email = email;
 		this.description = description;
 		this.address = address;
-
 	}
 
-	//get player id
+	// get player id
 	public Long getId() {
 		return id;
 	}
 
-	//set player id
+	// set player id
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	//get first name
+	// get first name
 	public String getFirstname() {
 		return firstname;
 	}
 
-	//set first name
+	// set first name
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
 
-	//get last name
+	// get last name
 	public String getLastname() {
 		return lastname;
 	}
 
-	//set last name
+	// set last name
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
 
-	//get email
+	// get email
 	public String getEmail() {
 		return email;
 	}
 
-	//set email
+	// set email
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	//get description
+	// get description
 	public String getDescription() {
 		return description;
 	}
 
-	//set description
+	// set description
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	//get address
+	// get address
 	public Address getAddress() {
 		return address;
 	}
 
-	//set address
+	// set address
 	public void setAddress(Address address) {
 		this.address = address;
 	}
 
-	//get Sponsor
+	// get Sponsor
 	public Sponsor getSponsor() {
 		return sponsorid;
 	}
 
-	//set sponsor
+	// set sponsor
 	public void setSponsor(Sponsor sponsor) {
 		this.sponsorid = sponsor;
 	}
 
-	//get opponents
+	// get opponents
 	public List<Long> getOpponents() {
 		return opponents;
 	}
 
-	//set opponents
+	// set opponents
 	public void setOpponents(List<Long> opponents) {
 		this.opponents = opponents;
 	}
+
+	// get group no
+	public String getGroup() {
+		return groupNo;
+	}
+
 }
