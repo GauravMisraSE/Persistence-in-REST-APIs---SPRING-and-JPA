@@ -59,7 +59,7 @@ public class SponsorController {
 			return new ResponseEntity<Sponsor>(HttpStatus.NOT_FOUND); 
 		else
 			
-			return new ResponseEntity<Sponsor>(retrieved, HttpStatus.NOT_FOUND); 
+			return new ResponseEntity<Sponsor>(retrieved, HttpStatus.OK); 
 	}
 
 	// updating an existing sponsor
